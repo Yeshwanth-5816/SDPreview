@@ -1,0 +1,57 @@
+{% extends 'musicbeats/basic.htm' %}
+{% block title %}SignUp{% endblock %}
+
+{% block body %}
+<body style="background-color:lightgreen;">
+
+<div class="container my-4">
+
+  <form method="POST" action="/musicbeats/signup">{% csrf_token %}
+
+    <div class="mb-3">
+        <label for="exampleFormControlInput1" class="form-label">Email address</label>
+        <input type="email" class="form-control" id="exampleFormControlInput1" placeholder="name@example.com" name="email">
+    </div>
+    <div class="mb-3">
+        <label for="exampleFormControlInput1" class="form-label">Username</label>
+        <input type="text" class="form-control" id="exampleFormControlInput1" name="username" pattern="[A-Za-z ]+" title="Username should only contain alphabets and spaces" required>
+    </div>
+    <div class="mb-3">
+        <label for="exampleFormControlInput1" class="form-label">First Name</label>
+        <input type="text" class="form-control" id="exampleFormControlInput1" name="first_name" pattern="[A-Za-z ]+" title="Username should only contain alphabets and spaces" required>
+    </div>
+    <div class="mb-3">
+        <label for="exampleFormControlInput1" class="form-label">Last Name</label>
+        <input type="text" class="form-control" id="exampleFormControlInput1" name="last_name" pattern="[A-Za-z ]+" title="Username should only contain alphabets and spaces" required>
+    </div>
+    <div class="mb-3">
+        <label for="exampleFormControlInput1" class="form-label">Password</label>
+        <input type="password" class="form-control" id="exampleFormControlInput1" name="pass1">
+    </div>
+    <div class="mb-3">
+        <label for="exampleFormControlInput1" class="form-label">Password (again)</label>
+        <input type="password" class="form-control" id="exampleFormControlInput1" name="pass2" pattern="^(?=.*[a-z])(?=.*[A-Z])(?=.*[!@#$%^&*])[A-Za-z\d!@#$%^&*]{8,}$" required title="Password must contain at least one uppercase letter, one lowercase letter, and one special character.">
+    </div>
+
+    <div style="padding-top: 2%;">
+    <button type="submit" class="btn btn-primary">SignUp</button>
+   </div>
+  </form>
+</div>
+
+
+  {% if messages %}
+    <div class="alert alert-danger mt-3">
+      {% for message in messages %}
+        {{ message }}
+      {% endfor %}
+    </div>
+  {% endif %}
+
+
+
+
+
+</body>
+
+{% endblock %}
